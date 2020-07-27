@@ -5,23 +5,11 @@ import QtQuick.VirtualKeyboard 2.4
 ApplicationWindow {
     id: window
     visible: true
-    width: 640
-    height: 480
+    width: 1920
+    height: 1080
     title: qsTr("Tabs")
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
-
-        Page1Form {
-        }
-
-        Page2Form {
-        }
-    }
-
-    footer: TabBar {
+    header: TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex
 
@@ -32,6 +20,28 @@ ApplicationWindow {
             text: qsTr("Page 2")
         }
     }
+
+    SwipeView {
+        id: swipeView
+        anchors.fill: parent
+        currentIndex: tabBar.currentIndex
+
+        PageTimer {
+
+        }
+
+        Page2Form {
+        }
+    }
+
+    footer: Rectangle {
+        id: tabBar2
+        height: 40
+        color: "black"
+
+    }
+
+
 
     InputPanel {
         id: inputPanel

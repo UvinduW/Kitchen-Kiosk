@@ -1,8 +1,18 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Page1Form.ui.qml</file>
         <file>Page2Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>TimerElement.qml</file>
+        <file>assets/timer/restart.png</file>
+        <file>assets/timer/stop.png</file>
+        <file>assets/timer/plus.png</file>
+        <file>assets/timer/play.png</file>
+        <file>assets/timer/play.svg</file>
+        <file>assets/timer/pause.svg</file>
+        <file>TestPage.qml</file>
+        <file>PageTimer.qml</file>
+        <file>PageTimerForm.ui.qml</file>
+        <file>TimerLogic.qml</file>
     </qresource>
 </RCC>
