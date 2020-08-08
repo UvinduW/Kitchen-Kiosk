@@ -22,6 +22,7 @@ Page {
         anchors.bottomMargin: 0
         anchors.fill: parent
 
+
         TimerLogic {
             id: timer1
             width: 326
@@ -77,6 +78,7 @@ Page {
 
         RoundButton {
             id: btnAdd
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             icon.source: "assets/timer/plus.png"
             icon.width: 300
             icon.height: 300

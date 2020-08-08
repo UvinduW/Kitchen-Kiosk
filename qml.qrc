@@ -14,5 +14,10 @@
         <file>PageTimer.qml</file>
         <file>PageTimerForm.ui.qml</file>
         <file>TimerLogic.qml</file>
+        <file>assets/timer/tick.svg</file>
+        <file>assets/timer/cross.svg</file>
+        <file>assets/timer/plus.svg</file>
+        <file>assets/timer/restart.svg</file>
+        <file>assets/timer/stop.svg</file>
     </qresource>
 </RCC>

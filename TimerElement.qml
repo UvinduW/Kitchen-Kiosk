@@ -5,7 +5,11 @@ import QtQuick.Layouts 1.11
 import QtGraphicalEffects 1.0
 
 Item {
+    id: rootTimerElement
     height: 1000
+    property alias graphicContainer: graphicContainer
+    property alias btnHide: btnHide
+    property alias rootTimerElement: rootTimerElement
     property alias btnStop: btnStop
     property alias btnAddTime: btnAddTime
     property alias btnRestart: btnRestart
@@ -18,8 +22,21 @@ Item {
     property alias txtTime: txtTime
     property alias txtName: txtName
     property string pauseIconPath: "assets/timer/pause.svg"
+    property double graphicContainerHeight: 0
+    property int timerMargins: 400
+
     Layout.fillWidth: true
     Layout.fillHeight: true
+
+    onHeightChanged: {
+        graphicContainerHeight = rootTimerElement.height/5
+    }
+
+    MouseArea{
+        id: backgroundMouse
+        anchors.fill: parent
+        onClicked: forceActiveFocus()
+    }
 
     //    Rectangle {
     //        anchors.fill: parent
@@ -29,16 +46,45 @@ Item {
         id: columnLayout
         spacing: 5
         anchors.fill: parent
+        anchors.topMargin: timerMargins
+        anchors.bottomMargin: timerMargins
+        anchors.leftMargin: timerMargins/5
+        anchors.rightMargin: timerMargins/5
 
-        TextInput {
-            id: txtName
-            width: 80
-            height: 20
-            color: "#ffffff"
-            text: qsTr("Alarm Name")
+
+        RowLayout {
+            id: rowLayout1
+            width: 100
+            height: 100
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            font.pixelSize: 40
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
+            RoundButton {
+                id: btnHide
+//                text: "X"
+                icon.source: "assets/timer/cross.svg"
+                autoExclusive: true
+            }
+
+            TextInput {
+                id: txtName
+                width: 80
+                height: 20
+                color: "#ffffff"
+                text: qsTr("Alarm Name")
+                cursorVisible: false
+                activeFocusOnPress: true
+                overwriteMode: false
+                mouseSelectionMode: TextInput.SelectCharacters
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                font.pixelSize: 40
+                Keys.onReturnPressed: backgroundMouse.forceActiveFocus()
+                maximumLength: 13
+            }
+
         }
+
 
         RowLayout {
             //            Layout.fillHeight: true
@@ -46,9 +92,9 @@ Item {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
             Rectangle {
-                id: rectangle
+                id: graphicContainer
                 color: "transparent"
-                Layout.preferredHeight: parent.parent.parent.height / 3
+                Layout.preferredHeight:graphicContainerHeight //parent.parent.parent.height / 5 //3
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 Layout.fillWidth: true
 
@@ -103,14 +149,14 @@ Item {
                     anchors.centerIn: parent
                     penStyle: Qt.RoundCap
                     dialType: RadialBar.FullDial
-                    progressColor: "#1dc58f"
+                    progressColor: "#00ffc1"
                     foregroundColor: "#191a2f"
                     dialWidth: 30
                     startAngle: 180
-                    spanAngle: 70
+                    //                    spanAngle: 1000 //70
                     minValue: 0
                     maxValue: 100
-                    value: 50
+                    value: 100
                     showText: false
                     textFont {
                         family: "Halvetica"
@@ -125,6 +171,7 @@ Item {
             }
         }
 
+
         ToolSeparator {
             id: toolSeparator
             Layout.rightMargin: 50
@@ -132,6 +179,7 @@ Item {
             Layout.fillWidth: true
             orientation: Qt.Horizontal
         }
+
 
         RowLayout {
             id: rowLayout
@@ -211,40 +259,47 @@ Item {
             }
         }
 
+
         RoundButton {
             id: btnRestart
-            text: qsTr("  RESTART")
+            text: qsTr("       RESTART")
             font.pointSize: 20
             Layout.preferredHeight: 70
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            icon.source: "assets/timer/restart.png"
+            icon.source: "assets/timer/restart.svg"
             icon.width: 40
             icon.height: 40
         }
+
 
 
         RoundButton {
             id: btnAddTime
-            text: qsTr("  60 seconds")
+            text: qsTr("        60 secs")
             font.pointSize: 20
             Layout.preferredHeight: 70
             Layout.fillWidth: true
             icon.height: 40
             icon.width: 40
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            icon.source: "assets/timer/plus.png"
+            icon.source: "assets/timer/plus.svg"
         }
+
+
         RoundButton {
             id: btnStop
-            text: "  STOP"
+            text: "          STOP  "
             font.pointSize: 20
             Layout.preferredHeight: 70
             Layout.fillWidth: true
-            icon.source: "assets/timer/stop.png"
+            icon.source: "assets/timer/stop.svg"
             icon.width: 40
             icon.height: 40
+
         }
+
+
     }
 }
 
@@ -252,8 +307,4 @@ Item {
 
 
 
-/*##^##
-Designer {
-    D{i:6;anchors_height:334;anchors_width:166}
-}
-##^##*/
+

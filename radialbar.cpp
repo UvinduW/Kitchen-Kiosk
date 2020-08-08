@@ -140,6 +140,7 @@ void RadialBar::setStartAngle(qreal angle)
     if(m_StartAngle == angle)
         return;
     m_StartAngle = angle;
+    update();   //update the radialbar
     emit startAngleChanged();
 }
 
@@ -148,6 +149,7 @@ void RadialBar::setSpanAngle(qreal angle)
     if(m_SpanAngle == angle)
         return;
     m_SpanAngle = angle;
+    update();   //update the radialbar
     emit spanAngleChanged();
 }
 
@@ -156,6 +158,7 @@ void RadialBar::setMinValue(qreal value)
     if(m_MinValue == value)
         return;
     m_MinValue = value;
+    update();   //update the radialbar
     emit minValueChanged();
 }
 
@@ -164,6 +167,7 @@ void RadialBar::setMaxValue(qreal value)
     if(m_MaxValue == value)
         return;
     m_MaxValue = value;
+    update();   //update the radialbar
     emit maxValueChanged();
 }
 
@@ -181,6 +185,7 @@ void RadialBar::setDialWidth(qreal width)
     if(m_DialWidth == width)
         return;
     m_DialWidth = width;
+    update();   //update the radialbar
     emit dialWidthChanged();
 }
 

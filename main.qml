@@ -2,6 +2,8 @@ import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.VirtualKeyboard 2.4
 
+// Icons: https://www.svgrepo.com/collection/symbols-icons/
+
 ApplicationWindow {
     id: window
     visible: true
